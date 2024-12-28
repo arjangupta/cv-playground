@@ -1,6 +1,8 @@
 import numpy as np
 
 def simple_example():
+    # Print simple example message
+    print("--- Simple Syntax Example ---")
     # Original array
     array = np.array([[1, 2], [3, 4]])
 
@@ -10,11 +12,24 @@ def simple_example():
     print(padded_array)
 
 def tuple_args_example():
-    # Example array with shape (4, 3, 3, 2)
-    images = np.random.rand(4, 3, 3, 2)
+    # Print tuple args example message
+    print("--- Tuple Args Example ---")
 
-    # Pad the array with a width of 3
-    width = 3
-    padded_images = np.pad(images, pad_width=((0, 0), (width, width), (width, width), (0, 0)), mode='constant', constant_values=0)
+    # Example array with shape 3x4x4 (3 channels, 4x4 image)
+    images = np.random.randint(0, 255, size=(3, 4, 4))
+    # Show the shape of the array
+    print(f"Original array shape: {images.shape}")
+    # Show the array
+    print(images)
 
-    print(padded_images.shape)
+    # Pad the array with a width variable
+    width = 2
+    padded_images = np.pad(images, pad_width=((0, 0), (width, width), (width, width)), mode='constant', constant_values=(0, 0))
+
+    print(f"After padding with width {width}")
+    print(f"New array shape: {padded_images.shape}")
+    print(padded_images)
+
+if __name__ == '__main__':
+    simple_example()
+    tuple_args_example()
