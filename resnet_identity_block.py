@@ -56,8 +56,8 @@ def identity_block(X, f, filters, initializer=random_uniform):
     ## Third component of main path (≈2 lines)
     ## Set the padding = 'valid'
     X = Conv2D(filters=F3, kernel_size=1, strides=(1,1), padding='valid', kernel_initializer= initializer(seed=0))(X)
-    X = BatchNormalization(axis=3) 
-
+    X = BatchNormalization(axis=3)(X)
+    
     ## Final step: Add shortcut value to main path, and pass it through a RELU activation (≈2 lines)
     X = Add()([X,X_shortcut])
     X = Activation('relu')(X)
